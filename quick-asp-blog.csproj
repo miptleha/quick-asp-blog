@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>quick_asp_blog</RootNamespace>
+    <UserSecretsId>104cae6f-c406-44e3-91ba-56bac7298483</UserSecretsId>
+  </PropertyGroup>
+
+</Project>

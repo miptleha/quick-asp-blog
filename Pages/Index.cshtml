@@ -1,0 +1,15 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Quick ASP blog";
+    ViewData["Index"] = true;
+}
+
+<div class="text-left">
+    @foreach (var b in Model.Blog)
+    {
+        <a asp-page="/Entry" asp-route-id="@b.Id"><h3>@b.Caption</h3></a>
+        <pre>@b.Text</pre>
+        <p class="small">Created: @b.DateCreated, Modified: @b.DateModified</p>
+    }
+</div>

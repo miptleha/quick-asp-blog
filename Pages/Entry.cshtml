@@ -1,0 +1,39 @@
+﻿@page
+@model EntryModel
+@{
+    ViewData["Title"] = "Blog entry";
+}
+
+<form method="post">
+    <div class="row">
+        <input type="hidden" name="id" value="@Model.Entry.Id" />
+
+        <div class="col-md-12">
+            Caption
+        </div>
+        <div class="col-md-12">
+            <input name="caption" id="caption" type="text" style="width:100%" value="@Model.Entry.Caption" />
+        </div>
+
+        <p>&nbsp;</p>
+
+        <div class="col-md-12">
+            Text
+        </div>
+        <div class="col-md-12">
+            <textarea id="text" name="text" style="width:100%" rows="10">@Model.Entry.Text</textarea>
+        </div>
+
+        <p>&nbsp;</p>
+    </div>
+
+    <button asp-page-handler="Register">Save</button>
+    <button asp-page-handler="Delete">Delete</button>
+</form>
+
+
+@section Scripts {
+    <script>
+
+    </script>
+}
