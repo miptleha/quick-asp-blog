@@ -24,7 +24,7 @@ namespace quick_asp_blog
             {
                 var f = files[i];
                 var id = Path.GetFileNameWithoutExtension(f);
-                var e = ReadOne(id, 2);
+                var e = ReadOne(id, 3);
                 if (!string.IsNullOrEmpty(e.Caption) && e.Text != null && e.Text.Length > 0)
                     res.Add(e);
             }
