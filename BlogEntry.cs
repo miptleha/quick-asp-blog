@@ -82,8 +82,8 @@ namespace quick_asp_blog
                     var path = Assembly.GetExecutingAssembly().Location;
                     var dir = Path.GetDirectoryName(path);
                     _path = Path.Combine(dir, "blog_entries");
-                    if (!Directory.Exists(dir))
-                        Directory.CreateDirectory(dir);
+                    if (!Directory.Exists(_path))
+                        Directory.CreateDirectory(_path);
                 }
 
                 return _path;
