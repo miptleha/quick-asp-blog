@@ -1,6 +1,7 @@
-![Blog](site.png)
-
 Simple blog on ASP.NET 5.0
+***
+![Blog](site.png)
+***
 
 ## What is it
 I want to start my blog (locally on laptop) and don't want to use ready-made solutions (for example, BlogEngine).
