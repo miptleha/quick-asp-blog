@@ -1,5 +1,5 @@
 Simple blog on ASP.NET 5.0
----
+***
 
 ![Blog](site.png)
 
