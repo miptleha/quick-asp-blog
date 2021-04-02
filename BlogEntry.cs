@@ -18,7 +18,8 @@ namespace quick_asp_blog
 
         public static List<BlogEntry> ReadAll()
         {
-            var files = Directory.GetFiles(BlogPath, "*.txt");
+            var files = Directory.GetFiles(BlogPath, "*.txt").Select(f => new FileInfo(f))
+                .OrderByDescending(f => f.CreationTime).Select(f => f.FullName).ToArray();
             var res = new List<BlogEntry>();
             for (int i = 0; i < files.Length; i++)
             {
