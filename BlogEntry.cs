@@ -14,7 +14,7 @@ namespace quick_asp_blog
         public string Caption { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }
-        public StringBuilder Text { get; set; }
+        public string Text { get; set; }
 
         public static List<BlogEntry> ReadAll()
         {
@@ -26,8 +26,7 @@ namespace quick_asp_blog
                 var f = files[i];
                 var id = Path.GetFileNameWithoutExtension(f);
                 var e = ReadOne(id, 3);
-                if (!string.IsNullOrEmpty(e.Caption) && e.Text != null && e.Text.Length > 0)
-                    res.Add(e);
+                res.Add(e);
             }
             return res;
         }
@@ -45,12 +44,17 @@ namespace quick_asp_blog
             {
                 res.Caption = sr.ReadLine();
 
-                res.Text = new StringBuilder();
+                string text = "";
                 string s;
-                for (int i = 0; (i < maxRows || maxRows == 0) && (s = sr.ReadLine()) != null; i++)
+                int lines = 0;
+                for (int i = 0; (lines < maxRows || maxRows == 0) && (s = sr.ReadLine()) != null; i++)
                 {
-                    res.Text.AppendLine(s);
+                    if (maxRows > 0 && string.IsNullOrWhiteSpace(s)) //trim on main page, not trim when edit
+                        continue;
+                    lines++;
+                    text += s + "\n";
                 }
+                res.Text = text;
             }
 
             return res;
@@ -63,7 +67,7 @@ namespace quick_asp_blog
             using (StreamWriter sw = new StreamWriter(path, false, Encoding.UTF8))
             {
                 sw.WriteLine(e.Caption);
-                sw.WriteLine(e.Text);
+                sw.Write(e.Text);
             }
         }
 

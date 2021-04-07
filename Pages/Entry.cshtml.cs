@@ -46,7 +46,7 @@ namespace quick_asp_blog.Pages
             var text = Request.Form["text"][0];
 
             Entry.Caption = caption;
-            Entry.Text = new StringBuilder(text);
+            Entry.Text = text;
 
             BlogEntry.SaveOne(Entry);
 
