@@ -16,6 +16,10 @@
             text = "-------------";
         <a asp-page="/Entry" asp-route-id="@b.Id" class="text-decoration-none"><h3>@caption</h3></a>
         <pre class="mb-0">@text</pre>
+        @if (b.More)
+        {
+            <a class="small" asp-page="/Entry" asp-route-id="@b.Id" class="text-decoration-none">Read more...</a>;
+        }
         <p class="small">Created: @b.DateCreated, Modified: @b.DateModified</p>
     }
 </div>

@@ -15,6 +15,7 @@ namespace quick_asp_blog
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }
         public string Text { get; set; }
+        public bool More { get; set; }
 
         public static List<BlogEntry> ReadAll()
         {
@@ -47,13 +48,19 @@ namespace quick_asp_blog
                 string text = "";
                 string s;
                 int lines = 0;
-                for (int i = 0; (lines < maxRows || maxRows == 0) && (s = sr.ReadLine()) != null; i++)
+                for (int i = 0; (s = sr.ReadLine()) != null; i++)
                 {
                     if (maxRows > 0 && string.IsNullOrWhiteSpace(s)) //trim on main page, not trim when edit
                         continue;
                     lines++;
+                    if (maxRows != 0 && lines >= maxRows)
+                    {
+                        res.More = true;
+                        break;
+                    }
                     text += s + "\n";
                 }
+
                 res.Text = text;
             }
 
