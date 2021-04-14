@@ -18,7 +18,7 @@
         <pre class="mb-0">@text</pre>
         @if (b.More)
         {
-            <a class="small" asp-page="/Entry" asp-route-id="@b.Id" class="text-decoration-none">Read more...</a>;
+            <a class="small text-decoration-none" asp-page="/Entry" asp-route-id="@b.Id">Read more...</a>;
         }
         <p class="small">Created: @b.DateCreated, Modified: @b.DateModified</p>
     }
