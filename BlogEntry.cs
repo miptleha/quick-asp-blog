@@ -45,7 +45,7 @@ namespace quick_asp_blog
             {
                 res.Caption = sr.ReadLine();
 
-                string text = "";
+                List<string> text = new List<string>();
                 string s;
                 int lines = 0;
                 for (int i = 0; (s = sr.ReadLine()) != null; i++)
@@ -53,15 +53,22 @@ namespace quick_asp_blog
                     if (maxRows > 0 && string.IsNullOrWhiteSpace(s)) //trim on main page, not trim when edit
                         continue;
                     lines++;
-                    if (maxRows != 0 && lines >= maxRows)
+                    if (maxRows != 0 && lines > maxRows)
                     {
                         res.More = true;
                         break;
                     }
-                    text += s + "\n";
+                    text.Add(s);
+                }
+                if (res.More)
+                {
+                    while (text.Count >= maxRows)
+                    {
+                        text.RemoveAt(text.Count - 1);
+                    }
                 }
 
-                res.Text = text;
+                res.Text = string.Join('\n', text);
             }
 
             return res;
