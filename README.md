@@ -28,4 +28,3 @@ I decided to host on IIS (have Windows 10 with IIS 10).
 
 Install hosting bundle, create new application pool, new site and publish application.
 
-Encountered a problem launching the application (default web.config not working, made some [changes](web.config))
