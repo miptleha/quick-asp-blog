@@ -27,8 +27,17 @@
         <p>&nbsp;</p>
     </div>
 
+    @if (!Model.Login)
+    {
+    <p>To edit this record you need to <a href="@Url.Page("Login", new { return_url = Request.PathBase + Request.Path + Request.QueryString.Value })">Log in!</a></p>
+    <button asp-page-handler="Back">Back</button>
+    }
+    else
+    {
     <button asp-page-handler="Register">Save</button>
     <button asp-page-handler="Delete">Delete</button>
+    <button asp-page-handler="Back">Back</button>
+    }
 </form>
 
 

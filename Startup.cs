@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -22,6 +23,8 @@ namespace quick_asp_blog
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSession();
+
             services.AddRazorPages();
         }
 
@@ -38,6 +41,11 @@ namespace quick_asp_blog
             }
 
             app.UseStaticFiles();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseRouting();
 

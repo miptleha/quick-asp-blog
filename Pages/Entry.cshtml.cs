@@ -5,8 +5,10 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Http.Extensions;
 
 namespace quick_asp_blog.Pages
 {
@@ -14,10 +16,24 @@ namespace quick_asp_blog.Pages
     {
         public BlogEntry Entry { get; private set; }
         public string Error { get; private set; }
-        
-        public void OnGet(string id)
+        public bool Login { get; private set; }
+
+        public IActionResult OnGetCreate()
         {
+            if (!HttpContext.Session.Keys.Contains("user"))
+            {
+                string value = Request.PathBase + Request.Path + Request.QueryString.Value;
+                return RedirectToPage("Login", new { return_url = value });
+            }
+                
+            return OnGet(null);
+        }
+        
+        public IActionResult OnGet(string id)
+        {
+            Login = HttpContext.Session.Keys.Contains("user");
             GetEntry(id);
+            return Page();
         }
 
         void GetEntry(string id)
@@ -60,6 +76,11 @@ namespace quick_asp_blog.Pages
 
             BlogEntry.DeleteOne(Entry);
 
+            return Redirect("~/");
+        }
+
+        public IActionResult OnPostBack()
+        {
             return Redirect("~/");
         }
     }

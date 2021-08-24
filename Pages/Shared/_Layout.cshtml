@@ -14,7 +14,7 @@
                 <a class="navbar-brand" asp-area="" asp-page="/Index">Quick ASP blog</a>
                 @if (ViewData["Index"] != null)
                 {
-                    <a asp-page="/Entry">Create new blog record</a>
+                    <a asp-page="/Entry" asp-page-handler="Create">Create new blog record</a>
                 }
             </div>
         </nav>

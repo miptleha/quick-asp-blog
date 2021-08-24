@@ -1,0 +1,5 @@
+﻿#user (empty not allowed)
+admin
+
+#password
+111

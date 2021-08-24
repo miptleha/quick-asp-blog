@@ -6,4 +6,10 @@
     <UserSecretsId>104cae6f-c406-44e3-91ba-56bac7298483</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Update="login.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
