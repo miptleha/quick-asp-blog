@@ -26,5 +26,7 @@ I need to blog on my laptop at any time.
 
 I decided to host on IIS (have Windows 10 with IIS 10).
 
-Install hosting bundle, in IIS management console create new application pool, new site or application in existing site and publish in folder from Visual Studio.
+* Install .NET Core hosting bundle.
+* In IIS management console create new application pool, new site or application in existing site.
+* Publish in folder from Visual Studio.
 
