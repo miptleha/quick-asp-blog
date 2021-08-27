@@ -12,7 +12,7 @@
             Caption
         </div>
         <div class="col-md-12">
-            <input name="caption" id="caption" type="text" style="width:100%" value="@Model.Entry.Caption" />
+            <input name="caption" id="caption" type="text" style="width:100%" value="@Model.Entry.Caption" required />
         </div>
 
         <p>&nbsp;</p>
@@ -29,14 +29,14 @@
 
     @if (!Model.Login)
     {
-    <p>To edit this record you need to <a href="@Url.Page("Login", new { return_url = Request.PathBase + Request.Path + Request.QueryString.Value })">Log in!</a></p>
-    <button asp-page-handler="Back">Back</button>
+    <p>To edit this record you need to <a href="@Url.Page("Login", new { return_url = Request.PathBase + Request.Path + Request.QueryString.Value })">Log in</a></p>
+    <button asp-page-handler="Back" formnovalidate class="btn btn-secondary">Back</button>
     }
     else
     {
-    <button asp-page-handler="Register">Save</button>
-    <button asp-page-handler="Delete">Delete</button>
-    <button asp-page-handler="Back">Back</button>
+    <button asp-page-handler="Register" class="btn btn-primary">Save</button>
+    <button asp-page-handler="Delete" formnovalidate class="btn btn-secondary">Delete</button>
+    <button asp-page-handler="Back" formnovalidate class="btn btn-secondary">Back</button>
     }
 </form>
 
