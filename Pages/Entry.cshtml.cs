@@ -36,15 +36,18 @@ namespace quick_asp_blog.Pages
             return Page();
         }
 
-        void GetEntry(string id)
+        void GetEntry(string id, bool create = false)
         {
-            if (id == null)
+            if (string.IsNullOrEmpty(id))
             {
                 //create new
                 var dt = DateTime.Now;
                 Entry = new BlogEntry();
-                Entry.Id = dt.ToString("yyyy-MM-dd HH-mm-ss");
-                BlogEntry.SaveOne(Entry);
+                if (create)
+                {
+                    Entry.Id = dt.ToString("yyyy-MM-dd HH-mm-ss");
+                    BlogEntry.SaveOne(Entry);
+                }
             }
             else
             {
@@ -56,7 +59,7 @@ namespace quick_asp_blog.Pages
         public IActionResult OnPostRegister()
         {
             var id = Request.Form["id"][0];
-            GetEntry(id);
+            GetEntry(id, true);
 
             var caption = Request.Form["caption"][0];
             var text = Request.Form["text"][0];
@@ -72,9 +75,11 @@ namespace quick_asp_blog.Pages
         public IActionResult OnPostDelete()
         {
             var id = Request.Form["id"][0];
-            GetEntry(id);
-
-            BlogEntry.DeleteOne(Entry);
+            if (!string.IsNullOrEmpty(id))
+            {
+                GetEntry(id);
+                BlogEntry.DeleteOne(Entry);
+            }
 
             return Redirect("~/");
         }

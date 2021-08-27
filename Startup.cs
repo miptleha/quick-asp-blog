@@ -35,9 +35,6 @@ namespace quick_asp_blog
 
             app.UseStaticFiles();
 
-            app.UseAuthentication();
-            app.UseAuthorization();
-
             app.UseSession();
 
             app.UseRouting();
